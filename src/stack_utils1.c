@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:49:39 by cado-car          #+#    #+#             */
-/*   Updated: 2022/01/18 11:14:57 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:14:48 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,22 @@ void	ft_stack_add_back(t_stack **stack, t_stack *new)
 	{
 		temp = ft_stack_last(*stack);
 		temp->next = new;
+	}
+}
+
+/*
+** ADD ITEM BEFORE FIRST ELEMENT OF STACK
+*/
+void	ft_stack_add_front(t_stack **stack, t_stack *new)
+{
+	t_stack	*elem;
+
+	if (*stack == NULL)
+		*stack = new;
+	else
+	{
+		elem = new;
+		elem->next = *stack;
+		*stack = elem;
 	}
 }
