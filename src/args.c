@@ -6,24 +6,35 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:00:52 by cado-car          #+#    #+#             */
-/*   Updated: 2022/01/18 14:41:11 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/02/28 21:22:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/push_swap.h"		
 
-int	check_args(char **argv)
+/*
+** CHECK IF ARGUMENTS PASSED ARE VALID - NUMERIC AND NON REPEATED
+*/
+
+int	ft_check_args(char **args)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (args[i])
 	{
 		j = 0;
-		while (argv[i][j])
+		while (args[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isnumeric(args[i][j]))
+				return (0);
+			j++;
+		}
+		j = i + 1;
+		while (args[j])
+		{
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
 				return (0);
 			j++;
 		}
@@ -32,22 +43,59 @@ int	check_args(char **argv)
 	return (1);
 }
 
-t_stack	*get_arg_list(int argc, char **argv)
-{
-	t_stack	*stack_a;
-	t_stack	*new;
-	int		i;
-	int		number;
+/*
+** EXTRACT ARGUMENT LIST TO LINKED LIST OF INT
+*/
 
-	stack_a = NULL;
-	new = NULL;
-	i = 1;
-	while (i < argc)
+t_list	*ft_get_stack_list(char **args)
+{
+	t_list	*list;
+	t_list	*new;
+	int		i;
+
+	list = NULL;
+	i = 0;
+	while (args[i])
 	{
-		number = ft_atoi(argv[i]);
-		new = stack_new(number);
-		ft_stack_add_back(&stack_a, new);
+		new = ft_list_new(ft_atoi(args[i]));
+		if (!new && list)
+		{
+			ft_clear_list(&list);
+			break ;
+		}
+		ft_list_add_back(&list, new);
 		i++;
 	}
-	return (stack_a);
+	return (list);
+}
+
+/*
+** GET SIZE AND RANGE OF STACK
+*/
+
+void	ft_stack_range(t_stack **stack)
+{
+	t_list	*list;
+	int		min;
+	int		max;
+
+	list = (*stack)->list;
+	(*stack)->size = 0;
+	if (list)
+	{
+		min = (*stack)->list->number;
+		max = (*stack)->list->number;
+		while (list)
+		{
+			(*stack)->size++;
+			if (list->number > max)
+				max = list->number;
+			if (list->number < min)
+				min = list->number;
+			list = list->next;
+		}
+		(*stack)->range = (size_t)(max - min);
+	}
+	else
+		(*stack)->range = 0;
 }

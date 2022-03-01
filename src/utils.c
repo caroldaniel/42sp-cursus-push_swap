@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:57:11 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 12:01:07 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2022/02/28 20:42:02 by cado-car          #+#    #+#             */
+/*   Updated: 2022/02/28 21:22:45 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/push_swap.h"
+
 /*
-*	DESCRIPTION
-*	Counts the number of elements in a list.
-*	PARAMETERS
-*	#1. The beginning of the list.
-*	RETURN VALUES
-*	Length of the list.
+** CHECK IF DIGIT NUMERICAL OR SYMBOLICAL
 */
 
-#include "libft.h"
-
-int	ft_lstsize(t_list *lst)
+int	ft_isnumeric(int c)
 {
-	t_list	*temp;
-	int		count;
-
-	temp = lst;
-	count = 0;
-	while (temp != NULL)
-	{
-		count++;
-		temp = temp->next;
-	}
-	return (count);
+	if ((c >= '0' && c <= '9') || c == '+' || c == '-')
+		return (1);
+	else
+		return (0);
 }

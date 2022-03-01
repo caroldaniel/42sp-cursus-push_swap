@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 20:00:57 by cado-car          #+#    #+#              #
-#    Updated: 2022/01/18 14:47:20 by cado-car         ###   ########.fr        #
+#    Updated: 2022/02/28 21:08:42 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,12 @@ CFI 			= -I $(INCLUDE)
 SRC 			= main.c \
 				args.c \
 				error.c \
-				stack_utils1.c \
-				stack_utils2.c \
-				operations1.c \
-				operations2.c
+				list_utils_1.c \
+				list_utils_2.c \
+				list_operations.c \
+				init.c \
+				utils.c \
+				sort.c
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 
