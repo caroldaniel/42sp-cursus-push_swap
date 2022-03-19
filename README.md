@@ -64,6 +64,13 @@ To do so you have the following operations at your disposal:
 - `rrb` (reverse rotate b): Shift down all elements of `stack B` by 1. The last element becomes the first one.  
 - `rrr`: `rra` and `rrb` at the same time.
 
+### The algorithms
+After extensive research, one thing became clear to me: this project is not about finding the best algorithm. It is, however, about subverting some existing ones into thinking and doing whatever is necessary to accomplish the goal in the minimum possible number of operations - no matter how long or how much computational power it takes. 
+
+Thankfully, I came across [Victor Nunes](https://github.com/victor-ln)'s solution a while ago and thought it was one of the best working solutions ever made for this project, and put my mind in trying it out! (Thanks again, Victor!).
+
+The idea of this "algorithm" is to ensure that the most efficient movement will be done at each interaction. I took Victor's idea to heart and implemented it myself as if to prove that it actually works (spoiler alert: it does beautifully!)
+
 ### Some interesting links
 - [Laís Arena](https://github.com/laisarena)'s [tester](https://github.com/laisarena/push_swap_tester)
 - [Ilya Kashnitskiy](https://github.com/elijahkash)'s [graphical interface](https://github.com/elijahkash/push_swap_gui)
