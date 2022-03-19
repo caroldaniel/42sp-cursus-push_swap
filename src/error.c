@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:17:23 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/18 19:19:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 11:44:31 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** CALL FREE FUNCTIONS AND EXIT PROGRAM
 */
 
-void	ft_end_program(t_data *data, char *exit_message, int exit_number)
+void	ft_end_program(t_data *data, int exit_number)
 {
 	if (data)
 	{
@@ -31,7 +31,7 @@ void	ft_end_program(t_data *data, char *exit_message, int exit_number)
 		free(data);
 	}
 	if (exit_number)
-		ft_putstr_fd(exit_message, 2);
+		ft_putstr_fd(ERROR_MSG, 2);
 	exit(exit_number);
 }
 
@@ -42,6 +42,6 @@ void	ft_end_program(t_data *data, char *exit_message, int exit_number)
 void	ft_free_stack(t_stack *stack)
 {
 	if (stack->list)
-		free(stack->list);
+		ft_clear_list(&stack->list);
 	free(stack);
 }

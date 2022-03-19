@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:58:11 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 07:41:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 11:23:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,19 @@ typedef struct s_data
 	void	(*ft[2])(struct s_data *, int);
 }			t_data;
 
-# define USAGE_MSG	"Wrong usage. Use:\n\t./push_swap <number_list>\n"
 # define ERROR_MSG	"Error\n"
 
 // Structs initialization
 t_data	*ft_init_data(int argc, char **argv);
-t_stack	*ft_init_stack(char **args, int id);
+t_stack	*ft_init_stack(t_data *data, char **args, int id);
 
 // Argument and stack management
-t_list	*ft_get_stack_list(char **stack);
-int		ft_check_args(char **stack);
+t_list	*ft_get_stack_list(t_data *data, char **args);
+int		ft_check_args(t_data *data, char **args);
 void	ft_stack_range(t_stack **stack);
 
 // Error management
-void	ft_end_program(t_data *data, char *exit_message, int exit_number);
+void	ft_end_program(t_data *data, int exit_number);
 void	ft_free_stack(t_stack *stack);
 
 // Linked list management and utils
@@ -114,6 +113,9 @@ void	ft_move(t_data *data);
 // Other utils
 int		ft_abs(int number);
 int		ft_isnumeric(int c);
+int		ft_atoi_mod(t_data *data, const char *str);
+char	**ft_args_copy(char **args, int size);
+void	ft_free_args(char **args);
 size_t	ft_count_lowers(t_stack *stack);
 size_t	ft_count_moves(int *position);
 void	ft_find_coef(t_data	*data);

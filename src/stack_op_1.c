@@ -6,12 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:46:56 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/02 15:05:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 10:32:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdio.h>
 
 /*
 ** SWAP FIRST TWO ELEMENTS OF LINKED LIST
