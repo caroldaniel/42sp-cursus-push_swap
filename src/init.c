@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:14:30 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/02 12:49:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/18 19:46:04 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ t_data	*ft_init_data(int argc, char **argv)
 	else
 		args = &argv[1];
 	if (!ft_check_args(args))
-		ft_error(data, ERROR_MSG, 2);
+		ft_end_program(data, ERROR_MSG, 2);
 	data = malloc(sizeof(t_data));
 	if (!data)
-		ft_error(data, ERROR_MSG, 3);
+		ft_end_program(data, ERROR_MSG, 3);
+	data->pos = (int *)malloc(sizeof(int) * 2);
+	data->tmp = (int *)malloc(sizeof(int) * 2);
 	data->a = ft_init_stack(args, A);
 	data->b = ft_init_stack(NULL, B);
-	if (!data->a || !data->b)
-		ft_error(data, ERROR_MSG, 4);
+	data->ft[ROTATE] = ft_rotate;
+	data->ft[REVERSE_ROTATE] = ft_reverse_rotate;
+	if (!data->pos || !data->tmp || !data->a || !data->b)
+		ft_end_program(data, ERROR_MSG, 5);
 	return (data);
 }
 

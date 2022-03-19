@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 20:48:11 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 07:46:52 by cado-car         ###   ########.fr       */
+/*   Created: 2022/03/18 19:55:02 by cado-car          #+#    #+#             */
+/*   Updated: 2022/03/18 19:57:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"	
+#include "../include/push_swap.h"
 
-void	ft_sort_stack(t_data *data)
+/*
+** RETURN ABSOLUTE VALUE OF NUMBER
+*/
+
+int	ft_abs(int number)
 {
-	ft_print_stack("STACK A", data->a->list);
-	ft_print_stack("STACK B", data->b->list);
-	ft_push_away(data);
-	ft_push_back(data);
-	ft_align(data);
-	ft_print_stack("STACK A", data->a->list);
-	ft_print_stack("STACK B", data->b->list);
+	if (number >= 0)
+		return (number);
+	else
+		return (-number);
+}
+
+/*
+** CHECK IF DIGIT NUMERICAL OR SYMBOLICAL
+*/
+
+int	ft_isnumeric(int c)
+{
+	if ((c >= '0' && c <= '9') || c == '+' || c == '-')
+		return (1);
+	else
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:49:39 by cado-car          #+#    #+#             */
-/*   Updated: 2022/02/28 19:55:03 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 08:03:07 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ t_list	*ft_list_last(t_list *list)
 	while (last->next)
 		last = last->next;
 	return (last);
+}
+
+/*
+** GET LIST AT INDEX
+*/
+int	ft_list_at(t_stack *stack, size_t index)
+{
+	t_list	*elem;
+	size_t	i;
+
+	i = 0;
+	elem = stack->list;
+	while (i != index)
+	{
+		i++;
+		elem = elem->next;
+	}
+	return (elem->number);
 }
 
 /*

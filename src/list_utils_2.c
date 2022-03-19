@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:44:28 by cado-car          #+#    #+#             */
-/*   Updated: 2022/02/28 20:30:48 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 08:03:37 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,36 +66,4 @@ int	ft_is_sorted(t_list *list, int id)
 		next = next->next;
 	}
 	return (1);
-}
-
-/*
-** PRINT STACK LIST < --- > DEVELOPMENT TOOL
-*/
-
-void	ft_print_stack(char *name, t_list *list)
-{
-	size_t	list_len;
-	size_t	i;
-	char	*nb;
-
-	list_len = ft_list_len(list);
-	i = 0;
-	nb = NULL;
-	ft_putstr_fd(name, 1);
-	ft_putstr_fd(": ", 1);
-	if (list_len == 0)
-		ft_putstr_fd("[ EMPTY ]\n", 1);
-	while (i < list_len)
-	{
-		if (i == 0)
-			ft_putstr_fd("[ ", 1);
-		nb = ft_itoa(list->number);
-		ft_putstr_fd(nb, 1);
-		i++;
-		if (i == list_len)
-			ft_putstr_fd(" ]\n", 1);
-		else
-			ft_putstr_fd(", ", 1);
-		list = list->next;
-	}
 }

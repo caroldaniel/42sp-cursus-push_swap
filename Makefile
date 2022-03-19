@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 20:00:57 by cado-car          #+#    #+#              #
-#    Updated: 2022/03/02 12:26:26 by cado-car         ###   ########.fr        #
+#    Updated: 2022/03/18 19:57:57 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRC 			= main.c \
 				stack_op_2.c \
 				utils_1.c \
 				utils_2.c \
-				sort.c
+				utils_3.c \
+				sort.c \
+				sort_utils_1.c \
+				sort_utils_2.c
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 

@@ -6,12 +6,14 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:33:28 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/02 15:20:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 08:10:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdio.h>
+
+static size_t	ft_position_by_max(t_stack *stack, size_t max_i);
+
 /*
 ** FIND OUT WHICH STACK(S) TO APPLY ROTATION MOVEMENT ON PUSH AWAY FUNCTION.
 */
@@ -92,4 +94,43 @@ int	ft_get_sort_five_swap_id(t_data *data)
 	else if (is_a)
 		return (A);
 	return (-1);
+}
+
+/*
+** FIND CORRECT POSITION TO PLACE STACK'S TOP ELEMENT IN ADJACENT STACK.
+*/
+
+int	ft_get_position(t_stack *stack, int nb)
+{
+	size_t	i;
+	size_t	max_i;
+	t_list	*curr;
+	t_list	*last;
+
+	i = 0;
+	max_i = 0;
+	curr = stack->list;
+	last = ft_list_last(stack->list);
+	while (curr)
+	{
+		if (nb < curr->number && nb > last->number)
+		{
+			if (i <= stack->size - i)
+				return (i);
+			return (-(stack->size - i));
+		}
+		if (curr->number > ft_list_at(stack, max_i))
+			max_i = i;
+		last = curr;
+		curr = curr->next;
+		i++;
+	}
+	return (ft_position_by_max(stack, ++max_i));
+}
+
+static size_t	ft_position_by_max(t_stack *stack, size_t max_i)
+{
+	if (max_i > stack->size / 2)
+		return (-(stack->size - max_i));
+	return (max_i);
 }

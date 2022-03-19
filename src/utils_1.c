@@ -6,23 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:42:02 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/02 15:01:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 06:32:53 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-/*
-** CHECK IF DIGIT NUMERICAL OR SYMBOLICAL
-*/
-
-int	ft_isnumeric(int c)
-{
-	if ((c >= '0' && c <= '9') || c == '+' || c == '-')
-		return (1);
-	else
-		return (0);
-}
 
 /*
 ** COUNT HOW MANY NUMBERS ON WHOLE STACK ARE LOWER THEN THE NUMBER ON TOP 
@@ -46,6 +34,29 @@ size_t	ft_count_lowers(t_stack *stack)
 		aux = aux->next;
 	}
 	return (lowers);
+}
+
+/*
+** CALCULATES HOW MANY OPERATIONS 
+*/
+
+size_t	ft_count_moves(int *position)
+{
+	if (position[A] * position[B] > 0)
+	{
+		if (position[A] > 0)
+		{
+			if (position[A] > position[B])
+				return (position[A]);
+			return (position[B]);
+		}
+		else if (position[A] < position[B])
+			return (-position[A]);
+		else
+			return (-position[B]);
+	}
+	else
+		return (ft_abs(position[A]) + ft_abs(position[B]));
 }
 
 /*

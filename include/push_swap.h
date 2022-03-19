@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:58:11 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/02 15:19:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 07:41:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,10 @@ enum e_order{
 
 // Stack order enumerator
 enum e_operation{
-	SWAP,
-	PUSH,
 	ROTATE,
-	REVERSE_ROTATE
-};
-
-// Algorithm function
-enum e_function{
-	PUSH_AWAY,
-	SORT_FIVE
+	REVERSE_ROTATE,
+	SWAP,
+	PUSH
 };
 
 // Linked list struct 
@@ -63,6 +57,11 @@ typedef struct s_data
 	t_stack	*a;
 	t_stack	*b;
 	float	coef[2];
+	int		*pos;
+	int		*tmp;
+	int		operate;
+	int		counter;
+	void	(*ft[2])(struct s_data *, int);
 }			t_data;
 
 # define USAGE_MSG	"Wrong usage. Use:\n\t./push_swap <number_list>\n"
@@ -78,12 +77,13 @@ int		ft_check_args(char **stack);
 void	ft_stack_range(t_stack **stack);
 
 // Error management
-void	ft_error(t_data *data, char *exit_message, int exit_number);
+void	ft_end_program(t_data *data, char *exit_message, int exit_number);
 void	ft_free_stack(t_stack *stack);
 
 // Linked list management and utils
 t_list	*ft_list_new(int number);
 t_list	*ft_list_last(t_list *list);
+int		ft_list_at(t_stack *stack, size_t index);
 void	ft_list_add_back(t_list **list, t_list *new);
 void	ft_list_add_front(t_list **list, t_list *new);
 void	ft_clear_list(t_list **list);
@@ -105,16 +105,23 @@ void	ft_reverse_rotate(t_data *data, int id);
 // Sorting algorithms
 void	ft_sort_stack(t_data *data);
 void	ft_push_away(t_data *data);
+void	ft_push_back(t_data *data);
+void	ft_align(t_data *data);
 void	ft_sort_five(t_data *data);
+void	ft_calculate_best_movement(t_data *data);
+void	ft_move(t_data *data);
 
 // Other utils
+int		ft_abs(int number);
 int		ft_isnumeric(int c);
 size_t	ft_count_lowers(t_stack *stack);
+size_t	ft_count_moves(int *position);
 void	ft_find_coef(t_data	*data);
 void	ft_print_movement(int operation, int stack_id);
 void	ft_print_stack(char *name, t_list *list);
 int		ft_get_push_away_id(t_data *data);
 int		ft_get_sort_five_rotate_id(t_data *data);
 int		ft_get_sort_five_swap_id(t_data *data);
+int		ft_get_position(t_stack *stack, int nb);
 
 #endif
