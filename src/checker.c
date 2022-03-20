@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:06:42 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/20 10:59:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 11:47:04 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_run_all(t_data *data, t_move	**commands)
 		}
 		tmp = tmp->next;
 	}
+	ft_clear_instruction_list(commands);
 }
 
 int	ft_execute_commands(t_data *data, char *command)
