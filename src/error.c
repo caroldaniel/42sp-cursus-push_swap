@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:17:23 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 18:51:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 18:51:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_end_program(t_data *data, int exit_number)
 			free(data->pos);
 		if (data->tmp)
 			free(data->tmp);
+		if (data->args)
+			ft_free_args(data->args);
 		free(data);
 	}
 	if (exit_number > 0)

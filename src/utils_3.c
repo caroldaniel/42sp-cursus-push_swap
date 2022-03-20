@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:55:02 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 11:48:53 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 19:00:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,36 @@ int	ft_abs(int number)
 }
 
 /*
-** CHECK IF DIGIT NUMERICAL OR SYMBOLICAL
+** CONVERTS ARGUMENT LIST 
 */
 
-int	ft_isnumeric(int c)
-{
-	if ((c >= '0' && c <= '9') || c == '+' || c == '-')
-		return (1);
-	else
-		return (0);
-}
-
-int	ft_atoi_mod(t_data *data, const char *str)
+int	ft_atoi_mod(t_data *data, int position)
 {
 	size_t	i;
 	int		sign;
-	int		total;
-	int		prev;
+	long	total;
 
 	i = 0;
 	sign = 1;
 	total = 0;
-	prev = 0;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
+	if (data->args[position][i] == '+' || data->args[position][i] == '-')
+		if (data->args[position][i++] == '-')
 			sign *= (-1);
-	while (str[i] >= '0' && str[i] <= '9')
+	if (!ft_isdigit(data->args[position][i]))
+		ft_end_program(data, 6);
+	while (data->args[position][i] >= '0' && data->args[position][i] <= '9')
 	{
-		prev = total;
-		total = total * 10 + (str[i] - '0');
-		if (total < prev)
+		if (sign == -1)
+			total = total * 10 - (data->args[position][i] - '0');
+		else
+			total = total * 10 + (data->args[position][i] - '0');
+		if (total < -2147483648 || total > 2147483647)
 			ft_end_program(data, 6);
 		i++;
 	}
-	return (total * sign);
+	if (!ft_isdigit(data->args[position][i]) && data->args[position][i] != 0)
+		ft_end_program(data, 6);
+	return ((int)total);
 }
 
 char	**ft_args_copy(char **args, int size)
@@ -93,6 +89,9 @@ void	ft_free_args(char **args)
 
 	i = 0;
 	while (args[i])
-		free(args[i++]);
+	{
+		free(args[i]);
+		i++;
+	}
 	free(args);
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:58:11 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/20 10:46:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 18:57:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include "../libft/libft.h"
+# include <stdio.h>
 
 // Stack IDs - A, B or R (for both)
 # define A		0
@@ -56,6 +57,7 @@ typedef struct s_data
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**args;
 	float	coef[2];
 	int		*pos;
 	int		*tmp;
@@ -77,11 +79,11 @@ typedef struct s_move
 
 // Structs initialization
 t_data	*ft_init_data(int argc, char **argv);
-t_stack	*ft_init_stack(t_data *data, char **args, int id);
+void	ft_init_stacks(t_data *data);
 
 // Argument and stack management
-t_list	*ft_get_stack_list(t_data *data, char **args);
-int		ft_check_args(t_data *data, char **args);
+void	ft_get_stack_list(t_data *data);
+int		ft_check_args(t_data *data);
 void	ft_stack_range(t_stack **stack);
 
 // Error management
@@ -121,8 +123,7 @@ void	ft_move(t_data *data);
 
 // Other utils
 int		ft_abs(int number);
-int		ft_isnumeric(int c);
-int		ft_atoi_mod(t_data *data, const char *str);
+int		ft_atoi_mod(t_data *data, int position);
 char	**ft_args_copy(char **args, int size);
 void	ft_free_args(char **args);
 size_t	ft_count_lowers(t_stack *stack);

@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 20:00:57 by cado-car          #+#    #+#              #
-#    Updated: 2022/03/20 10:48:05 by cado-car         ###   ########.fr        #
+#    Updated: 2022/03/20 11:52:31 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,12 +80,14 @@ all:			$(NAME)
 
 re:				fclean all
 
-bonus:			$(OBJ_BONUS)
+$(NAME_BONUS):	$(OBJ_BONUS)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
 				make -C $(LIBFT_PATH) $(LIBFT)
 				@printf "\n$(CY)Generating checker executable...$(RC)\n"
 				$(CC) $(CF) -I $(INCLUDE) -o $(NAME_BONUS) $(OBJ_BONUS) -L $(LIBFT_PATH) -lft
 				@printf "$(GR)Done!$(RC)\n\n"
+
+bonus:			$(NAME_BONUS)
 
 rebonus:		fclean bonus
 

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:00:52 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 11:40:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 19:00:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,22 @@
 ** CHECK IF ARGUMENTS PASSED ARE VALID - NUMERIC AND NON REPEATED
 */
 
-int	ft_check_args(t_data *data, char **args)
+int	ft_check_args(t_data *data)
 {
-	int	i;
-	int	j;
+	t_list	*tmp;
+	t_list	*iterator;
 
-	i = 0;
-	while (args[i])
+	tmp = data->a->list;
+	while (tmp)
 	{
-		j = 0;
-		while (args[i][j])
+		iterator = tmp->next;
+		while (iterator)
 		{
-			if (!ft_isnumeric(args[i][j]))
+			if (tmp->number == iterator->number)
 				return (0);
-			j++;
+			iterator = iterator->next;
 		}
-		j = i + 1;
-		while (args[j])
-		{
-			if (ft_atoi_mod(data, args[i]) == ft_atoi_mod(data, args[j]))
-				return (0);
-			j++;
-		}
-		i++;
+		tmp = tmp->next;
 	}
 	return (1);
 }
@@ -47,26 +40,24 @@ int	ft_check_args(t_data *data, char **args)
 ** EXTRACT ARGUMENT LIST TO LINKED LIST OF INT
 */
 
-t_list	*ft_get_stack_list(t_data *data, char **args)
+void	ft_get_stack_list(t_data *data)
 {
-	t_list	*list;
 	t_list	*new;
 	int		i;
 
-	list = NULL;
+	data->a->list = NULL;
 	i = 0;
-	while (args[i])
+	while (data->args[i])
 	{
-		new = ft_list_new(ft_atoi_mod(data, args[i]));
-		if (!new && list)
+		new = ft_list_new(ft_atoi_mod(data, i));
+		if (!new && data->a->list)
 		{
-			ft_clear_list(&list);
+			ft_clear_list(&data->a->list);
 			break ;
 		}
-		ft_list_add_back(&list, new);
+		ft_list_add_back(&data->a->list, new);
 		i++;
 	}
-	return (list);
 }
 
 /*
