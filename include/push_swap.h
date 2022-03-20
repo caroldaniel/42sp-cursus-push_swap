@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:58:11 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 11:23:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 10:46:47 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_list
 {
 	int				number;
 	struct s_list	*next;
-}					t_list;
+}	t_list;
 
 // Stack struct
 typedef struct s_stack
@@ -49,7 +49,7 @@ typedef struct s_stack
 	size_t	size;
 	size_t	range;
 	int		order;
-}			t_stack;
+}	t_stack;
 
 // Project data struct
 typedef struct s_data
@@ -61,10 +61,19 @@ typedef struct s_data
 	int		*tmp;
 	int		operate;
 	int		counter;
-	void	(*ft[2])(struct s_data *, int);
-}			t_data;
+	void	(*ft[2])(struct s_data *, int, int);
+}	t_data;
+
+// Bonus struct for command list
+typedef struct s_move
+{
+	char			*command;
+	struct s_move	*next;
+}	t_move;
 
 # define ERROR_MSG	"Error\n"
+# define BONUS_OK	"OK\n"
+# define BONUS_KO	"KO\n"
 
 // Structs initialization
 t_data	*ft_init_data(int argc, char **argv);
@@ -96,10 +105,10 @@ void	ft_stack_rotate(t_stack **stack);
 void	ft_stack_reverse_rotate(t_stack **stack);
 
 // Movements
-void	ft_swap(t_data *data, int id);
-void	ft_push(t_data *data, int id);
-void	ft_rotate(t_data *data, int id);
-void	ft_reverse_rotate(t_data *data, int id);
+void	ft_swap(t_data *data, int id, int is_print);
+void	ft_push(t_data *data, int id, int is_print);
+void	ft_rotate(t_data *data, int id, int is_print);
+void	ft_reverse_rotate(t_data *data, int id, int is_print);
 
 // Sorting algorithms
 void	ft_sort_stack(t_data *data);
@@ -125,5 +134,18 @@ int		ft_get_push_away_id(t_data *data);
 int		ft_get_sort_five_rotate_id(t_data *data);
 int		ft_get_sort_five_swap_id(t_data *data);
 int		ft_get_position(t_stack *stack, int nb);
+
+// BONUS PART
+// Instruction list management and utils
+t_move	*ft_instruction_new(char *command);
+t_move	*ft_instruction_last(t_move *list);
+void	ft_instruction_add_back(t_move **list, t_move *new);
+void	ft_clear_instruction_list(t_move **list);
+size_t	ft_instruction_list_len(t_move *list);
+
+// Commands management
+t_move	*ft_read_commands(void);
+void	ft_run_all(t_data *data, t_move	**commands);
+int		ft_execute_commands(t_data *data, char *command);
 
 #endif

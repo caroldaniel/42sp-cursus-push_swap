@@ -6,11 +6,12 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 20:00:57 by cado-car          #+#    #+#              #
-#    Updated: 2022/03/18 19:57:57 by cado-car         ###   ########.fr        #
+#    Updated: 2022/03/20 10:48:05 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= push_swap
+NAME_BONUS		= checker
 LIBFT			= libft.a
 
 LIBFT_PATH 		= ./libft/
@@ -36,9 +37,26 @@ SRC 			= main.c \
 				utils_3.c \
 				sort.c \
 				sort_utils_1.c \
-				sort_utils_2.c
+				sort_utils_2.c \
+				
+SRC_BONUS		= checker.c	\
+				utils_bonus.c \
+				args.c \
+				init.c \
+				error.c \
+				list_utils_1.c \
+				list_utils_2.c \
+				stack_op_1.c \
+				stack_op_2.c \
+				utils_1.c \
+				utils_2.c \
+				utils_3.c \
+				sort.c \
+				sort_utils_1.c \
+				sort_utils_2.c \
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
+OBJ_BONUS		= $(addprefix $(OBJ_PATH), $(notdir $(SRC_BONUS:.c=.o)))
 
 #common commands
 RM 				= rm -rf
@@ -59,19 +77,29 @@ $(NAME):		$(OBJ)
 
 all:			$(NAME)
 
+
 re:				fclean all
+
+bonus:			$(OBJ_BONUS)
+				@printf "\n$(CY)Generating libft...$(RC)\n"
+				make -C $(LIBFT_PATH) $(LIBFT)
+				@printf "\n$(CY)Generating checker executable...$(RC)\n"
+				$(CC) $(CF) -I $(INCLUDE) -o $(NAME_BONUS) $(OBJ_BONUS) -L $(LIBFT_PATH) -lft
+				@printf "$(GR)Done!$(RC)\n\n"
+
+rebonus:		fclean bonus
 
 clean:
 				make -C $(LIBFT_PATH) clean
-				$(RM) $(OBJ) $(OBJDIR)
+				$(RM) $(OBJ) $(OBJ_BONUS) $(OBJDIR)
 				@printf "$(RE)push_swap objects removed!$(RC)\n\n"
 
 fclean:			clean
 				make -C $(LIBFT_PATH) fclean
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(NAME_BONUS)
 				@printf "$(RE)Executables removed!$(RC)\n\n"
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re bonus rebonus
 
 # Colors
 GR	= \033[32;1m

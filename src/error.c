@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:17:23 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 11:44:31 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:51:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@ void	ft_end_program(t_data *data, int exit_number)
 			free(data->tmp);
 		free(data);
 	}
-	if (exit_number)
+	if (exit_number > 0)
 		ft_putstr_fd(ERROR_MSG, 2);
+	else if (exit_number == -1)
+		ft_putstr_fd(BONUS_OK, 1);
+	else if (exit_number == -2)
+		ft_putstr_fd(BONUS_KO, 1);
 	exit(exit_number);
 }
 

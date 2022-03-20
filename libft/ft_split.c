@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:45:55 by cado-car          #+#    #+#             */
-/*   Updated: 2022/01/18 10:45:54 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/20 10:18:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 void	ft_createsplit(char **result, char const *s, char c);
 size_t	ft_addpart(char **result, const char *prev, size_t size, char c);
-size_t	ft_count(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -35,7 +34,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	result = (char **)malloc((ft_count(s, c) + 1) * sizeof(char *));
+	result = (char **)malloc((ft_split_count(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	ft_createsplit(result, s, c);
@@ -81,7 +80,7 @@ size_t	ft_addpart(char **result, const char *prev, size_t size, char c)
 	return (1);
 }
 
-size_t	ft_count(const char *s, char c)
+size_t	ft_split_count(const char *s, char c)
 {
 	size_t	i;
 	size_t	prev;

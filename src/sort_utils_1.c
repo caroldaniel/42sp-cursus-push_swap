@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:25:49 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 08:04:51 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:08:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_push_away(t_data *data)
 		ft_find_coef(data);
 		movement_id = ft_get_push_away_id(data);
 		if (movement_id > -1)
-			ft_rotate(data, movement_id);
+			ft_rotate(data, movement_id, 1);
 		else
-			ft_push(data, B);
+			ft_push(data, B, 1);
 	}
 	ft_sort_five(data);
 }
@@ -74,5 +74,5 @@ void	ft_align(t_data *data)
 	if (start_i > data->a->size - start_i)
 		start_i = data->a->size - start_i;
 	while (start_i--)
-		data->ft[operate](data, A);
+		data->ft[operate](data, A, 1);
 }

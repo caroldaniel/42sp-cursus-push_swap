@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 09:56:58 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 08:02:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:44:04 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** SWAP FIRST TWO ELEMENTS OF STACK (ra, rb, rr)
 */
 
-void	ft_swap(t_data *data, int id)
+void	ft_swap(t_data *data, int id, int is_print)
 {
 	if (id == A)
 		ft_stack_swap(&data->a);
@@ -27,26 +27,28 @@ void	ft_swap(t_data *data, int id)
 		ft_stack_swap(&data->a);
 		ft_stack_swap(&data->b);
 	}
-	ft_print_movement(SWAP, id);
+	if (is_print)
+		ft_print_movement(SWAP, id);
 }
 
 /*
 ** PUSH FIRST ELEMENT OF STACK TO THE TOP OF THE OTHER (pa, pb)
 */
 
-void	ft_push(t_data *data, int id)
+void	ft_push(t_data *data, int id, int is_print)
 {
 	if (id == R)
 		return ;
 	ft_stack_push(data, id);
-	ft_print_movement(PUSH, id);
+	if (is_print)
+		ft_print_movement(PUSH, id);
 }
 
 /*
 ** ROTATE STACKS (ra, rb, rr)
 */
 
-void	ft_rotate(t_data *data, int id)
+void	ft_rotate(t_data *data, int id, int is_print)
 {
 	if (id == A)
 		ft_stack_rotate(&data->a);
@@ -57,14 +59,15 @@ void	ft_rotate(t_data *data, int id)
 		ft_stack_rotate(&data->a);
 		ft_stack_rotate(&data->b);
 	}
-	ft_print_movement(ROTATE, id);
+	if (is_print)
+		ft_print_movement(ROTATE, id);
 }
 
 /*
 ** REVERSE ROTATE STACKS (rra, rrb, rrr)
 */
 
-void	ft_reverse_rotate(t_data *data, int id)
+void	ft_reverse_rotate(t_data *data, int id, int is_print)
 {
 	if (id == A)
 		ft_stack_reverse_rotate(&data->a);
@@ -75,7 +78,8 @@ void	ft_reverse_rotate(t_data *data, int id)
 		ft_stack_reverse_rotate(&data->a);
 		ft_stack_reverse_rotate(&data->b);
 	}
-	ft_print_movement(REVERSE_ROTATE, id);
+	if (is_print)
+		ft_print_movement(REVERSE_ROTATE, id);
 }
 
 /*

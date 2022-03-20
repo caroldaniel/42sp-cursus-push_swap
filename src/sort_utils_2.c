@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:29:27 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 08:04:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:48:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	ft_sort_five(t_data *data)
 		rotate_id = ft_get_sort_five_rotate_id(data);
 		swap_id = ft_get_sort_five_swap_id(data);
 		if (rotate_id > -1)
-			ft_rotate(data, rotate_id);
+			ft_rotate(data, rotate_id, 1);
 		else if (swap_id > -1)
-			ft_swap(data, swap_id);
+			ft_swap(data, swap_id, 1);
 		else if (!ft_is_sorted(data->a->list, data->a->order))
-			ft_push(data, B);
+			ft_push(data, B, 1);
 		else if (data->a->size + data->b->size < 6)
-			ft_push(data, A);
+			ft_push(data, A, 1);
 		else
 			break ;
 	}
@@ -83,14 +83,14 @@ void	ft_move(t_data *data)
 		data->pos[B] -= data->counter;
 		data->counter = ft_abs(data->counter);
 		while (--data->counter >= 0)
-			data->ft[data->operate](data, R);
+			data->ft[data->operate](data, R, 1);
 	}
 	data->pos[A] = ft_abs(data->pos[A]);
 	while (--data->pos[A] >= 0)
-		data->ft[data->operate](data, A);
+		data->ft[data->operate](data, A, 1);
 	data->operate = data->pos[B] < 0;
 	data->pos[B] = ft_abs(data->pos[B]);
 	while (--data->pos[B] >= 0)
-		data->ft[data->operate](data, B);
-	ft_push(data, A);
+		data->ft[data->operate](data, B, 1);
+	ft_push(data, A, 1);
 }

@@ -2,6 +2,7 @@
 */*.a
 obj
 push_swap
+checker
 checker_linux
 push_swap_tester
 .vscode

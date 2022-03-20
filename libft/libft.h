@@ -13,8 +13,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
 
 // Part 1 functions
 int		ft_isalpha(int c);
@@ -46,6 +47,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+size_t	ft_split_count(const char *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -53,5 +55,20 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+// Get_Next_Line functions and Macros
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 100
+# endif
+
+char	*get_next_line(int fd);
+
+// New libft functions
+char	*ft_uitoa_base(unsigned long nbr, char *base);
+int		ft_atoi_base(char *str, char *base);
 
 #endif
