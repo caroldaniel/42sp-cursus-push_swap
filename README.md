@@ -103,15 +103,17 @@ After extensive research, one thing became clear to me: this project is not abou
 
 Thankfully, I came across [Victor Nunes](https://github.com/victor-ln)'s solution a while ago and thought it was one of the best ever made for this project. So, I put all my efforts and my mind in trying it out! (Thanks again, Victor!).
 
+![push_swap_visualizer](./imgs/push_swap_visualizer.gif)
+
 The idea of this "algorithm" is to ensure that the most efficient movement will be done at each interation. I took Victor's idea to heart and implemented it myself as if to prove that it actually works (spoiler alert: it does beautifully!). The program runs on average 22% more efficiently then the maximum accepted for a 100% score. For example, in a 500 numbers' stack, the average iteration count is around 4300 movements (where the aim is to reach up to 5500 for an A grade).
 
 The idea is very simple and is divided in four basic steps: 
 - `Step 1`: calculate if the top number at stack A is among the 30%ish lowest numbers in the entire stack (this number was not chosen on random - it came from multiple test for the most optimized combination). If it is, push it to stack B. The program will do the math for every number on stack A until it is at most 5 numbers long;
 - `Step 2`: sort the five numbers left at stack A, so that it becomes ready to receive the numbers at stack B back;
 - `Step 3`: push the numbers from stack B back to A, but with a minor detail: the program will calculate the correct place for that number to be, so that when it is pushed, stack A will never be out of order again. More then that, it will calculate which number from stack B takes the minimum amount of movements (the one at the top, the second or the last one). It will only move a number if it can make sure that it is the most optimum choice;
-- `Step 4`: when all the numbers from stack B are back and in order on stack A, then the program will align the stack, making sure that it starts with the lowest number. 
+- `Step 4`: when all the numbers from stack B are back and in order on stack A, then the program will align the stack, making sure that it starts with the lowest number.
 
-As you can see, it takes a lot of computational power. The stack are iterated over multiple times, and a bunch of calculations are done at every step. However, this is the beauty of `push_swap`: it is not about computational performance; it is about being smart and subverting the algorithms to work in your favor. 
+As you can see, it takes a lot of computational power. The stacks are iterated over multiple times, and a bunch of calculations are done at every step. However, this is the beauty of `push_swap`: it is not about computational performance; it is about being smart and subverting the algorithms to work in your favor. 
 
 ### The implementation
 
@@ -189,3 +191,4 @@ The implementation for the Bonus part can be found below:
 - [Laís Arena](https://github.com/laisarena)'s [tester](https://github.com/laisarena/push_swap_tester)
 - [Ilya Kashnitskiy](https://github.com/elijahkash)'s [graphical interface](https://github.com/elijahkash/push_swap_gui)
 - [Paula Hemsi](https://github.com/paulahemsi)'s [push_swap simulator](https://phemsi-a.itch.io/push-swap)
+- [Emmanuel Ruaud](https://github.com/o-reo)'s [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer)
