@@ -6,14 +6,20 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:00:52 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/20 19:00:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 11:47:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"		
 
-/*
-** CHECK IF ARGUMENTS PASSED ARE VALID - NUMERIC AND NON REPEATED
+/*	FT_CHECK_ARGS
+**	------------
+**	DESCRIPTION
+**	Checks for repeated values among argument list.
+**	PARAMETERS
+**	#1. The t_data struct with arguments allocated within it.
+**	RETURN VALUES
+**	Returns 1 for correct list os arguments, and 0 for any mistakes found in it.
 */
 
 int	ft_check_args(t_data *data)
@@ -36,8 +42,15 @@ int	ft_check_args(t_data *data)
 	return (1);
 }
 
-/*
-** EXTRACT ARGUMENT LIST TO LINKED LIST OF INT
+/*	FT_GET_STACK_LIST
+**	------------
+**	DESCRIPTION
+**	Converts arguments from given parameters into stack A's linked list initial
+**	state.
+**	PARAMETERS
+**	#1. The t_data struct with arguments allocated within it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_get_stack_list(t_data *data)
@@ -60,8 +73,14 @@ void	ft_get_stack_list(t_data *data)
 	}
 }
 
-/*
-** GET SIZE AND RANGE OF STACK
+/*	FT_STACK_RANGE
+**	------------
+**	DESCRIPTION
+**	Gets range of numbers contained in stack.
+**	PARAMETERS
+**	#1. The t_stack struct with list allocated within it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_stack_range(t_stack **stack)

@@ -6,15 +6,20 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:29:27 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 18:48:38 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:23:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*
-** PUSH ELEMENTS FROM STACK A TO B IN A SEMI-ORDERED WAY, UNTIL STACK A IS 
-** AT LEAST FIVE ELEMENTS LONG AND FULLY SORTED.
+/*	FT_SORT_FIVE
+**	------------
+**	DESCRIPTION
+**	Sorts a list of a maximum number of five elements.
+**	PARAMETERS
+**	#1. The t_data struct with all data stored in it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_sort_five(t_data *data)
@@ -39,8 +44,15 @@ void	ft_sort_five(t_data *data)
 	}
 }
 
-/*
-** RUN ENTIRE STACK CALCULATING BEST OPERATIONS COUNT
+/*	FT_CALCULATE_BEST_MOVEMENT
+**	------------
+**	DESCRIPTION
+**	Calculates which movement will have the minimum number of instructions on
+**	the push_back funciton.
+**	PARAMETERS
+**	#1. The t_data struct with all data stored in it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_calculate_best_movement(t_data *data)
@@ -66,8 +78,14 @@ void	ft_calculate_best_movement(t_data *data)
 	}
 }
 
-/*
-** MAKE BEST MOVEMENT BASED ON POSITION
+/*	FT_CALCULATE_BEST_MOVEMENT
+**	------------
+**	DESCRIPTION
+**	Moves the stack accordingly to the best movement found. 
+**	PARAMETERS
+**	#1. The t_data struct with all data stored in it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_move(t_data *data)

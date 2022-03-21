@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:33:28 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 08:10:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:09:09 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 static size_t	ft_position_by_max(t_stack *stack, size_t max_i);
 
-/*
-** FIND OUT WHICH STACK(S) TO APPLY ROTATION MOVEMENT ON PUSH AWAY FUNCTION.
+/*	FT_GET_PUSH_AWAY_ID
+**	------------
+**	DESCRIPTION
+**	Calculates in which stacks we should apply the specif movements on 
+**	push_away function (A for only A, B for only B and R for both). 
+**	PARAMETERS
+**	#1. The t_data struct with both stacks within it.
+**	RETURN VALUES
+**	0 for A, 1 for B or 2 for R.
 */
 
 int	ft_get_push_away_id(t_data *data)
@@ -34,8 +41,15 @@ int	ft_get_push_away_id(t_data *data)
 	return (-1);
 }
 
-/*
-** FIND OUT WHICH STACK(S) TO APPLY ROTATION MOVEMENT ON SORT FIVE FUNCTION.
+/*	FT_GET_SORT_FIVE_ROTATE_ID
+**	------------
+**	DESCRIPTION
+**	Calculates in which stacks we should apply the rotation movement on 
+**	sort_five function (A for only A, B for only B and R for both). 
+**	PARAMETERS
+**	#1. The t_data struct with both stacks within it.
+**	RETURN VALUES
+**	0 for A, 2 for R or -1 for error.
 */
 
 int	ft_get_sort_five_rotate_id(t_data *data)
@@ -65,8 +79,15 @@ int	ft_get_sort_five_rotate_id(t_data *data)
 	return (-1);
 }
 
-/*
-** FIND OUT WHICH STACK(S) TO APPLY SWAP MOVEMENT ON SORT FIVE FUNCTION.
+/*	FT_GET_SORT_FIVE_SWAP_ID
+**	------------
+**	DESCRIPTION
+**	Calculates in which stacks we should apply the swap movement on 
+**	sort_five function (A for only A, B for only B and R for both). 
+**	PARAMETERS
+**	#1. The t_data struct with both stacks within it.
+**	RETURN VALUES
+**	0 for A, 2 for R or -1 for error.
 */
 
 int	ft_get_sort_five_swap_id(t_data *data)
@@ -96,8 +117,17 @@ int	ft_get_sort_five_swap_id(t_data *data)
 	return (-1);
 }
 
-/*
-** FIND CORRECT POSITION TO PLACE STACK'S TOP ELEMENT IN ADJACENT STACK.
+/*	FT_GET_POSITION
+**	------------
+**	DESCRIPTION
+**	Calculates in which position on stack A the given number will be put on the
+**	push_back function. 
+**	PARAMETERS
+**	#1. The t_stack struct;
+**	#2. The number to place.
+**	RETURN VALUES
+**	The integer correspondent to the position of the placement. Negative values 
+**	are used to indicate reverse_rotation.
 */
 
 int	ft_get_position(t_stack *stack, int nb)

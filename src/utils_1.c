@@ -6,14 +6,20 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:42:02 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 06:32:53 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:14:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*
-** COUNT HOW MANY NUMBERS ON WHOLE STACK ARE LOWER THEN THE NUMBER ON TOP 
+/*	FT_COUNT_LOWERS
+**	------------
+**	DESCRIPTION
+**	Counts how many numbers are lower then the one on top of stack.
+**	PARAMETERS
+**	#1. The t_stack struct.
+**	RETURN VALUES
+**	An unsigned int correstpondent to the count.
 */
 
 size_t	ft_count_lowers(t_stack *stack)
@@ -36,8 +42,15 @@ size_t	ft_count_lowers(t_stack *stack)
 	return (lowers);
 }
 
-/*
-** CALCULATES HOW MANY OPERATIONS 
+/*	FT_GET_SORT_FIVE_SWAP_ID
+**	------------
+**	DESCRIPTION
+**	Calculates how many operations are taken to move a number to the position
+**	given. 
+**	PARAMETERS
+**	#1. The position parameter.
+**	RETURN VALUES
+**	An unsigned int correstpondent to the count.
 */
 
 size_t	ft_count_moves(int *position)
@@ -59,8 +72,14 @@ size_t	ft_count_moves(int *position)
 		return (ft_abs(position[A]) + ft_abs(position[B]));
 }
 
-/*
-** FIND STACK SPLIT COEFICIENT < -- > found through trial and error 
+/*	FT_FIND_COEF
+**	------------
+**	DESCRIPTION
+**	Populated the coef list with the correspondent static values below.
+**	PARAMETERS
+**	#1. The t_data struct with the stack A defined. 
+**	RETURN VALUES
+**	-
 */
 
 void	ft_find_coef(t_data	*data)
@@ -77,8 +96,15 @@ void	ft_find_coef(t_data	*data)
 	}
 }
 
-/*
-** PRINT MOVEMENTS
+/*	FT_PRINT_MOVEMENT
+**	------------
+**	DESCRIPTION
+**	Prints the movement instruction on screen.
+**	PARAMETERS
+**	#1. The operation indicator;
+**	#2. The id of the stack(s) moved. 
+**	RETURN VALUES
+**	-
 */
 
 void	ft_print_movement(int operation, int stack_id)

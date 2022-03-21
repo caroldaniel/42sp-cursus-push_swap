@@ -6,15 +6,21 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:25:49 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 19:08:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:19:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*
-** PUSH ELEMENTS FROM STACK A TO B IN A SEMI-ORDERED WAY, UNTIL STACK A IS 
-** AT LEAST FIVE ELEMENTS LONG AND FULLY SORTED.
+/*	FT_PUSH_AWAY
+**	------------
+**	DESCRIPTION
+**	Pushes elements from stack A to B in a semi-ordered way, until stack A is 
+**	at least five elements long and fully sorted.
+**	PARAMETERS
+**	#1. The t_data struct with all data stored in it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_push_away(t_data *data)
@@ -33,9 +39,15 @@ void	ft_push_away(t_data *data)
 	ft_sort_five(data);
 }
 
-/*
-** PUSH ELEMENTS BACK FROM STACK B TO A, GUARANTEEING THAT THE STACK A
-** REMAINS FULLY ORDERED.
+/*	FT_PUSH_AWAY
+**	------------
+**	DESCRIPTION
+**	Pushes elements back from stack B to A, guaranteeing that the stack A 
+**	remains sorted.
+**	PARAMETERS
+**	#1. The t_data struct with all data stored in it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_push_back(t_data *data)
@@ -47,8 +59,14 @@ void	ft_push_back(t_data *data)
 	}
 }
 
-/*
-** ALIGN STACK A SO THAT IT STARTS WITH THE SMALLEST NUMBER
+/*	FT_ALIGN
+**	------------
+**	DESCRIPTION
+**	Align elements on stack A so that the element on top is in fact the lowest.
+**	PARAMETERS
+**	#1. The t_data struct with all data stored in it.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_align(t_data *data)

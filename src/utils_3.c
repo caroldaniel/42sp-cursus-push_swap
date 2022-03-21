@@ -6,14 +6,20 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:55:02 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/20 19:00:38 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 11:30:09 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*
-** RETURN ABSOLUTE VALUE OF NUMBER
+/*	FT_ABS
+**	------------
+**	DESCRIPTION
+**	Converts number to its absolute value.  
+**	PARAMETERS
+**	#1. Number to be converted.
+**	RETURN VALUES
+**	The absolute integer value converted.
 */
 
 int	ft_abs(int number)
@@ -24,8 +30,18 @@ int	ft_abs(int number)
 		return (-number);
 }
 
-/*
-** CONVERTS ARGUMENT LIST 
+/*	FT_ATOI_MOD
+**	------------
+**	DESCRIPTION
+**	Does the same as the classical atoi but with a few adaptations in order to 
+**	exit program at first bad conversion, handles MIN and MAX ints and does not
+**	allows for unprintable characters nor other characters of any form among 
+**	string. It also exits at no numeric occurance.  
+**	PARAMETERS
+**	#1. The t_data struct in which all arguments are kept;
+**	#2. The position in which to convert string from argument's array. 
+**	RETURN VALUES
+**	The integer converted.
 */
 
 int	ft_atoi_mod(t_data *data, int position)
@@ -57,6 +73,18 @@ int	ft_atoi_mod(t_data *data, int position)
 	return ((int)total);
 }
 
+/*	FT_ARGS_COPY
+**	------------
+**	DESCRIPTION
+**	Copies all arguments from a list of `size` strings into a new list of 
+**	strings.  
+**	PARAMETERS
+**	#1. The char ** list of strings to copy;
+**	#2. The size of the list. 
+**	RETURN VALUES
+**	The new list.
+*/
+
 char	**ft_args_copy(char **args, int size)
 {
 	char	**copied;
@@ -81,17 +109,4 @@ char	**ft_args_copy(char **args, int size)
 	}
 	copied[i] = NULL;
 	return (copied);
-}
-
-void	ft_free_args(char **args)
-{
-	size_t	i;
-
-	i = 0;
-	while (args[i])
-	{
-		free(args[i]);
-		i++;
-	}
-	free(args);
 }

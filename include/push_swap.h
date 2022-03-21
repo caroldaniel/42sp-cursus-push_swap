@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:58:11 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/20 18:57:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:00:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,23 @@ t_data	*ft_init_data(int argc, char **argv);
 void	ft_init_stacks(t_data *data);
 
 // Argument and stack management
-void	ft_get_stack_list(t_data *data);
 int		ft_check_args(t_data *data);
+void	ft_get_stack_list(t_data *data);
 void	ft_stack_range(t_stack **stack);
 
 // Error management
 void	ft_end_program(t_data *data, int exit_number);
 void	ft_free_stack(t_stack *stack);
+void	ft_free_args(char **args);
 
 // Linked list management and utils
 t_list	*ft_list_new(int number);
 t_list	*ft_list_last(t_list *list);
-int		ft_list_at(t_stack *stack, size_t index);
 void	ft_list_add_back(t_list **list, t_list *new);
 void	ft_list_add_front(t_list **list, t_list *new);
 void	ft_clear_list(t_list **list);
 size_t	ft_list_len(t_list *list);
+int		ft_list_at(t_stack *stack, size_t index);
 int		ft_is_sorted(t_list *list, int id);
 
 // Stack operations
@@ -125,7 +126,6 @@ void	ft_move(t_data *data);
 int		ft_abs(int number);
 int		ft_atoi_mod(t_data *data, int position);
 char	**ft_args_copy(char **args, int size);
-void	ft_free_args(char **args);
 size_t	ft_count_lowers(t_stack *stack);
 size_t	ft_count_moves(int *position);
 void	ft_find_coef(t_data	*data);

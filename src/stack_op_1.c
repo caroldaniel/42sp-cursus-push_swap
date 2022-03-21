@@ -6,14 +6,21 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:46:56 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 10:32:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 11:47:08 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 /*
-** SWAP FIRST TWO ELEMENTS OF LINKED LIST
+**	FT_STACK_SWAP
+**	------------
+**	DESCRIPTION
+**	Swap first two numbers from stack's list top. 
+**	PARAMETERS
+**	#1. The t_stack struct.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_stack_swap(t_stack **stack)
@@ -31,7 +38,15 @@ void	ft_stack_swap(t_stack **stack)
 }
 
 /*
-** PUSH FIRST ELEMENT OF LIST TO TOP OF ANOTHER
+**	FT_STACK_PUSH
+**	------------
+**	DESCRIPTION
+**	Push numbers from one stack's list to another's stack's list. 
+**	PARAMETERS
+**	#1. The t_data struct with both stacks allocated within it.
+**	$2. The id of the movement (push into A or B stack)
+**	RETURN VALUES
+**	-
 */
 
 void	ft_stack_push(t_data *data, int id)
@@ -59,7 +74,14 @@ void	ft_stack_push(t_data *data, int id)
 }
 
 /*
-** ROTATE LIST
+**	FT_STACK_ROTATE
+**	------------
+**	DESCRIPTION
+**	Rotate numbers on stack's list. 
+**	PARAMETERS
+**	#1. The t_stack struct.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_stack_rotate(t_stack **stack)
@@ -75,7 +97,14 @@ void	ft_stack_rotate(t_stack **stack)
 }
 
 /*
-** REVERSE ROTATE LIST
+**	FT_STACK_REVERSE_ROTATE
+**	------------
+**	DESCRIPTION
+**	Reverse rotate numbers on stack's list. 
+**	PARAMETERS
+**	#1. The t_stack struct.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_stack_reverse_rotate(t_stack **stack)

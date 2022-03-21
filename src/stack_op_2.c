@@ -6,14 +6,24 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 09:56:58 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/19 18:44:04 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 11:47:34 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 /*
-** SWAP FIRST TWO ELEMENTS OF STACK (ra, rb, rr)
+**	FT_SWAP
+**	------------
+**	DESCRIPTION
+**	Execute swap movement on one or both stacks, printing the movement or not
+**	when finished.
+**	PARAMETERS
+**	#1. The t_data struct;
+**	#2. The id of the movement (A for only stack a, B for b and R for both);
+**	#3. The boolean paramenter for printing instruction on STDOUT or not.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_swap(t_data *data, int id, int is_print)
@@ -32,7 +42,17 @@ void	ft_swap(t_data *data, int id, int is_print)
 }
 
 /*
-** PUSH FIRST ELEMENT OF STACK TO THE TOP OF THE OTHER (pa, pb)
+**	FT_PUSH
+**	------------
+**	DESCRIPTION
+**	Execute push movement on one of the stacks, printing the movement or not
+**	when finished.
+**	PARAMETERS
+**	#1. The t_data struct;
+**	#2. The id of the movement (A for stack a or B for stack b);
+**	#3. The boolean paramenter for printing instruction on STDOUT or not.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_push(t_data *data, int id, int is_print)
@@ -45,7 +65,17 @@ void	ft_push(t_data *data, int id, int is_print)
 }
 
 /*
-** ROTATE STACKS (ra, rb, rr)
+**	FT_ROTATE
+**	------------
+**	DESCRIPTION
+**	Execute rotate movement on one or both stacks, printing the movement or not
+**	when finished.
+**	PARAMETERS
+**	#1. The t_data struct;
+**	#2. The id of the movement (A for only stack a, B for b and R for both);
+**	#3. The boolean paramenter for printing instruction on STDOUT or not.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_rotate(t_data *data, int id, int is_print)
@@ -64,7 +94,17 @@ void	ft_rotate(t_data *data, int id, int is_print)
 }
 
 /*
-** REVERSE ROTATE STACKS (rra, rrb, rrr)
+**	FT_REVERSE_ROTATE
+**	------------
+**	DESCRIPTION
+**	Execute reverse_rotate movement on one or both stacks, printing the movement
+**	or not when finished.
+**	PARAMETERS
+**	#1. The t_data struct;
+**	#2. The id of the movement (A for only stack a, B for b and R for both);
+**	#3. The boolean paramenter for printing instruction on STDOUT or not.
+**	RETURN VALUES
+**	-
 */
 
 void	ft_reverse_rotate(t_data *data, int id, int is_print)
@@ -80,36 +120,4 @@ void	ft_reverse_rotate(t_data *data, int id, int is_print)
 	}
 	if (is_print)
 		ft_print_movement(REVERSE_ROTATE, id);
-}
-
-/*
-** PRINT STACK LIST < --- > DEVELOPMENT TOOL
-*/
-
-void	ft_print_stack(char *name, t_list *list)
-{
-	size_t	list_len;
-	size_t	i;
-	char	*nb;
-
-	list_len = ft_list_len(list);
-	i = 0;
-	nb = NULL;
-	ft_putstr_fd(name, 1);
-	ft_putstr_fd(": ", 1);
-	if (list_len == 0)
-		ft_putstr_fd("[ EMPTY ]\n", 1);
-	while (i < list_len)
-	{
-		if (i == 0)
-			ft_putstr_fd("[ ", 1);
-		nb = ft_itoa(list->number);
-		ft_putstr_fd(nb, 1);
-		i++;
-		if (i == list_len)
-			ft_putstr_fd(" ]\n", 1);
-		else
-			ft_putstr_fd(", ", 1);
-		list = list->next;
-	}
 }
