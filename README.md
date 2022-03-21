@@ -66,36 +66,36 @@ To do so you have the following operations at your disposal:
 
 You can launch the program by doing
 ```sh
-> ./push_swap <list_of_integers> 
+> $ ./push_swap <list_of_integers> 
 ```
 The list can be passed as a single array of multiple numbers, indiferently. 
 ```sh
-> ./push_swap 1 3 5 4 2 0 -4
+> $ ./push_swap 1 3 5 4 2 0 -4
 ```
 or
 ```sh
-> ./push_swap "1 3 5 4 2 0 -4"
+> $ ./push_swap "1 3 5 4 2 0 -4"
 ```
 
 The expected output should be the instructions applied in order to sort the stack: 
 
 ```sh
-> ./push_swap 0 4 2
+> $ ./push_swap 0 4 2
 > pb
 > ra
 > pa
 ```
 Or an `Error` message in case of errors of any kind:
 ```sh
-> ./push_swap 0 4 two
+> $ ./push_swap 0 4 two
 > Error
 ```
 
 If no parameters are passed, the command prompted will be returned with no error message:
 Or an `Error` message in case of errors of any kind:
 ```sh
-> ./push_swap
-> 
+> $ ./push_swap
+> $
 ```
 
 ### The algorithm
@@ -153,7 +153,37 @@ Error management and program closing
 
 The bonus part of this project consists in producing a `checker` executable that will check, for the stack given, it the instructions passed on the command prompt in fact are able to sort the stack.
 
-When 
+You can launch the program by typing:
+```sh
+> $ ./checker <list_of_integers> 
+``` 
+
+And then typing the instructions in order to sort them, only separated by a new line. By pressing `Ctrl+D` at the end, the program will return `OK` if list is sorted:
+```sh
+> $ ./push_swap 0 4 2
+> $ pb
+> $ ra
+> $ pa
+> OK
+```
+`KO` if not:
+```sh
+> $ ./push_swap 0 4 2
+> $ pb
+> $ ra
+> KO
+```
+And `Error` if there were any errors in reading the instructions or parsing the list:
+```sh
+> $ ./push_swap 0 4 2
+> $ not_a_comand
+> Error
+```
+
+The implementation for the Bonus part can be found below:
+	
+- [`checker.c`](src/checker.c)
+- [`utils_bonus.c`](src/utils_bonus.c)
 
 ### Some interesting links
 - [Laís Arena](https://github.com/laisarena)'s [tester](https://github.com/laisarena/push_swap_tester)
