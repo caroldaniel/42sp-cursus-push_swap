@@ -49,6 +49,19 @@ You have 2 stacks named `A` and `B`.
 - The `stack A` contains a random amount of negative and/or positive numbers which cannot be duplicated. 
 - The `stack B` is empty. 
 
+You can launch the program by doing
+```sh
+> ./push_swap <list_of_integers> 
+```
+The list can be passed as a single array of multiple numbers, indiferently. 
+```sh
+> ./push_swap 1 3 5 4 2 0 -4
+```
+or
+```sh
+> ./push_swap "1 3 5 4 2 0 -4"
+```
+
 The goal is to sort in ascending order numbers into `stack A`.
 To do so you have the following operations at your disposal: 
 
@@ -64,12 +77,62 @@ To do so you have the following operations at your disposal:
 - `rrb` (reverse rotate b): Shift down all elements of `stack B` by 1. The last element becomes the first one.  
 - `rrr`: `rra` and `rrb` at the same time.
 
-### The algorithms
+### The algorithm
 After extensive research, one thing became clear to me: this project is not about finding the best algorithm. It is, however, about subverting some existing ones into thinking and doing whatever is necessary to accomplish the goal in the minimum possible number of operations - no matter how long or how much computational power it takes. 
 
-Thankfully, I came across [Victor Nunes](https://github.com/victor-ln)'s solution a while ago and thought it was one of the best working solutions ever made for this project, and put my mind in trying it out! (Thanks again, Victor!).
+Thankfully, I came across [Victor Nunes](https://github.com/victor-ln)'s solution a while ago and thought it was one of the best ever made for this project. So, I put all my efforts and my mind in trying it out! (Thanks again, Victor!).
 
-The idea of this "algorithm" is to ensure that the most efficient movement will be done at each interaction. I took Victor's idea to heart and implemented it myself as if to prove that it actually works (spoiler alert: it does beautifully!)
+The idea of this "algorithm" is to ensure that the most efficient movement will be done at each interation. I took Victor's idea to heart and implemented it myself as if to prove that it actually works (spoiler alert: it does beautifully!). The program runs on average 22% more efficiently then the maximum accepted for a 100% score. For example, in a 500 numbers' stack, the average iteration count is around 4300 movements (where the aim is to reach up to 5500 for an A grade).
+
+The idea is very simple and is divided in four basic steps: 
+- `Step 1`: calculate if the top number at stack A is among the 30%ish lowest numbers in the entire stack (this number was not chosen on random - it came from multiple test for the most optimized combination). If it is, push it to stack B. The program will do the math for every number on stack A until it is at most 5 numbers long;
+- `Step 2`: sort the five numbers left at stack A, so that it becomes ready to receive the numbers at stack B back;
+- `Step 3`: push the numbers from stack B back to A, but with a minor detail: the program will calculate the correct place for that number to be, so that when it is pushed, stack A will never be out of order again. More then that, it will calculate which number from stack B takes the minimum amount of movements (the one at the top, the second or the last one). It will only move a number if it can make sure that it is the most optimum choice;
+- `Step 4`: when all the numbers from stack B are back and in order on stack A, then the program will align the stack, making sure that it starts with the lowest number. 
+
+As you can see, it takes a lot of computational power. The stack are iterated over multiple times, and a bunch of calculations are done at every step. However, this is the beauty of `push_swap`: it is not about computational performance; it is about being smart and subverting the algorithms to work in your favor. 
+
+### The implementation
+
+- [`Makefile`](Makefile)
+
+Header file
+- [`push_swap.h`](include/push_swap.h)
+
+Main function	
+- [`main.c`](src/main.c)
+
+Initialization
+- [`init.c`](src/init.c)
+- [`args.c`](src/args.c)
+
+Linked list utils
+- [`list_utils_1.c`](src/list_utils_1.c)
+- [`list_utils_2.c`](src/list_utils_2.c)
+
+Stack management and operations
+- [`stack_op_1.c`](src/stack_op_1.c)
+- [`stack_op_2.c`](src/stack_op_2.c)
+
+Sorting
+- [`sort.c`](src/sort.c)
+- [`sort_utils_1.c`](src/sort_utils_1.c)
+- [`sort_utils_2.c`](src/sort_utils_2.c)
+
+Code utilities
+- [`utils_1.c`](src/utils_1.c)
+- [`utils_2.c`](src/utils_2.c)
+- [`utils_3.c`](src/utils_3.c)
+
+
+Error management and program closing
+- [`error.c`](src/error.c)
+
+### Bonus
+
+The bonus part of this project consists in producing a `checker` executable that will check, for the stack given, it the instructions passed on the command prompt in fact are able to sort the stack.
+
+When 
 
 ### Some interesting links
 - [Laís Arena](https://github.com/laisarena)'s [tester](https://github.com/laisarena/push_swap_tester)
