@@ -49,19 +49,6 @@ You have 2 stacks named `A` and `B`.
 - The `stack A` contains a random amount of negative and/or positive numbers which cannot be duplicated. 
 - The `stack B` is empty. 
 
-You can launch the program by doing
-```sh
-> ./push_swap <list_of_integers> 
-```
-The list can be passed as a single array of multiple numbers, indiferently. 
-```sh
-> ./push_swap 1 3 5 4 2 0 -4
-```
-or
-```sh
-> ./push_swap "1 3 5 4 2 0 -4"
-```
-
 The goal is to sort in ascending order numbers into `stack A`.
 To do so you have the following operations at your disposal: 
 
@@ -76,6 +63,40 @@ To do so you have the following operations at your disposal:
 - `rra` (reverse rotate a): Shift down all elements of `stack A` by 1. The last element becomes the first one. 
 - `rrb` (reverse rotate b): Shift down all elements of `stack B` by 1. The last element becomes the first one.  
 - `rrr`: `rra` and `rrb` at the same time.
+
+You can launch the program by doing
+```sh
+> ./push_swap <list_of_integers> 
+```
+The list can be passed as a single array of multiple numbers, indiferently. 
+```sh
+> ./push_swap 1 3 5 4 2 0 -4
+```
+or
+```sh
+> ./push_swap "1 3 5 4 2 0 -4"
+```
+
+The expected output should be the instructions applied in order to sort the stack: 
+
+```sh
+> ./push_swap 0 4 2
+> pb
+> ra
+> pa
+```
+Or an `Error` message in case of errors of any kind:
+```sh
+> ./push_swap 0 4 two
+> Error
+```
+
+If no parameters are passed, the command prompted will be returned with no error message:
+Or an `Error` message in case of errors of any kind:
+```sh
+> ./push_swap
+> 
+```
 
 ### The algorithm
 After extensive research, one thing became clear to me: this project is not about finding the best algorithm. It is, however, about subverting some existing ones into thinking and doing whatever is necessary to accomplish the goal in the minimum possible number of operations - no matter how long or how much computational power it takes. 
