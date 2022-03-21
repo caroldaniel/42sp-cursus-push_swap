@@ -113,7 +113,7 @@ The idea is very simple and is divided in four basic steps:
 - `Step 3`: push the numbers from stack B back to A, but with a minor detail: the program will calculate the correct place for that number to be, so that when it is pushed, stack A will never be out of order again. More then that, it will calculate which number from stack B takes the minimum amount of movements (the one at the top, the second or the last one). It will only move a number if it can make sure that it is the most optimum choice;
 - `Step 4`: when all the numbers from stack B are back and in order on stack A, then the program will align the stack, making sure that it starts with the lowest number.
 
-As you can see, it takes a lot of computational power. The stack are iterated over multiple times, and a bunch of calculations are done at every step. However, this is the beauty of `push_swap`: it is not about computational performance; it is about being smart and subverting the algorithms to work in your favor. 
+As you can see, it takes a lot of computational power. The stacks are iterated over multiple times, and a bunch of calculations are done at every step. However, this is the beauty of `push_swap`: it is not about computational performance; it is about being smart and subverting the algorithms to work in your favor. 
 
 ### The implementation
 
