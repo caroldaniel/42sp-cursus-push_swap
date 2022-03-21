@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:06:42 by cado-car          #+#    #+#             */
-/*   Updated: 2022/03/20 19:27:12 by cado-car         ###   ########.fr       */
+/*   Updated: 2022/03/21 09:32:35 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int	main(int argc, char **argv)
 		exit(1);
 	data = ft_init_data(argc, argv);
 	commands = ft_read_commands();
-	if (!commands)
-		ft_end_program(data, 0);
-	ft_run_all(data, &commands);
+	if (commands)
+		ft_run_all(data, &commands);
 	if (!ft_is_sorted(data->a->list, data->a->order) || data->b->size > 0)
 		ft_end_program(data, -2);
 	ft_end_program(data, -1);
